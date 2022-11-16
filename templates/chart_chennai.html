@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<body>
+    <h1> <b>Production Trend in chennai</b></h1>
+<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+<script>
+var xValues = {{labels|safe}};
+
+new Chart("myChart", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{ 
+      data: {{product_over_line1|safe}},
+      borderColor: "red",
+      fill: false
+    }, { 
+      data: {{product_over_line2|safe}},
+      borderColor: "green",
+      fill: false
+    }, { 
+      data: {{product_over_line3|safe}},
+      borderColor: "blue",
+      fill: false
+    },{ 
+        data: {{product_over_line4|safe}},
+        borderColor: "green",
+        fill: false
+      }
+    ]
+  },
+  options: {
+    legend: {display: false}
+  }
+});
+</script>
+
+</body>
+</html>
